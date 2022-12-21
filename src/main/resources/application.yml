@@ -1,0 +1,15 @@
+spring:
+  security:
+    user.name: username
+    user.password: password
+  profiles.active: jdbc
+  datasource:
+    url: jdbc:mysql://localhost:3306/cloud_config_db
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    config.server:
+      jdbc:
+        sql: SELECT prop_key, value from properties where application=? and profile=? and label=?
+        order: 1
